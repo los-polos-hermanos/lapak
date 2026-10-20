@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Lapak - Al Amin Barokah</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #0b7a41; overflow: hidden; }
+  /* iframe dipaku ke viewport yang BENAR-BENAR terlihat: 100vh di HP = tinggi saat bilah alamat
+     tersembunyi, jadi menu bawah app terdorong ke luar layar. dvh memperbaiki itu; vh = cadangan. */
+  iframe { border: 0; display: block; width: 100%; height: 100vh; height: 100dvh;
+           position: fixed; inset: 0; padding-bottom: env(safe-area-inset-bottom, 0px); box-sizing: border-box; }
+</style>
+</head>
+<body>
+<!-- Halaman pembungkus: app di-load di iframe credentialless (tanpa cookie Google)
+     supaya kebal masalah "multi-akun" di HP. -->
+<iframe id="f" credentialless referrerpolicy="no-referrer" allow="clipboard-write"></iframe>
+<script>
+  // URL app + token di-encode base64 (sekedar biar tidak terbaca langsung dari view-source)
+  var B64 = "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5Tmh2ZUh3SE82TU5xMnhlQzBpZkRsWTFZR3ZrTG5Xdk0yem5XUHl5VDVmenEwdzNTRU9EaFBQbDc5YUlqUVA0cFcvZXhlYz9rPWY3ZTM1YTkxMzM=";
+  document.getElementById('f').src = atob(B64);
+</script>
+</body>
+</html>
